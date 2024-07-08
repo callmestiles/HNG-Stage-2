@@ -1,11 +1,12 @@
 import "./CheckoutButton.scss";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 function CheckoutButton({ text }) {
   return (
-    <a className="checkoutbutton" href="/checkout">
+    <NavLink to="/checkout" className="checkoutbutton">
       {text}
-    </a>
+    </NavLink>
   );
 }
 
