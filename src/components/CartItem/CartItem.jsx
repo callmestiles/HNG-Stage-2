@@ -45,17 +45,17 @@ function CartItem({ allChecked, index, product, price, url, deleteFromCart }) {
         <div className="cart-item__cta">
           <div className="cart-item__counter">
             <div className="cart-item__add" onClick={handleAdd}>
-              <img src="../../icons/icon-add.svg" alt="Icon-add" />
+              <img src="../../../icons/icon-add.svg" alt="Icon-add" />
             </div>
             <div className="cart-item__count">
               <p>{count}</p>
             </div>
             <div className="cart-item__subtract" onClick={handleSubtract}>
-              <img src="../../icons/icon-subtract.svg" alt="Icon-subtract" />
+              <img src="../../../icons/icon-subtract.svg" alt="Icon-subtract" />
             </div>
           </div>
           <div className="cart-item__delete" onClick={handleDelete}>
-            <img src="../../icons/icon-delete.svg" alt="Icon-delete" />
+            <img src="../../../icons/icon-delete.svg" alt="Icon-delete" />
           </div>
         </div>
       </div>

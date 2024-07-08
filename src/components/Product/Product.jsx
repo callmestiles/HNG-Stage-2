@@ -34,8 +34,8 @@ function Product({ product, addItem, isInCart }) {
           <img
             src={
               addedToCart
-                ? "../../../public/icons/icon-cart-fill.svg"
-                : "../../../public/icons/icon-cart.svg"
+                ? "../../../icons/icon-cart-fill.svg"
+                : "../../../icons/icon-cart.svg"
             }
             alt="Icon-cart"
           />
@@ -44,8 +44,8 @@ function Product({ product, addItem, isInCart }) {
           <img
             src={
               liked
-                ? "../../../public/icons/icon-like-fill.svg"
-                : "../../../public/icons/icon-like.svg"
+                ? "../../../icons/icon-like-fill.svg"
+                : "../../../icons/icon-like.svg"
             }
             alt="Icon-like"
           />
