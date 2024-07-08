@@ -1,0 +1,97 @@
+@import "../../assets/partials/colors";
+
+.ship {
+    display: flex;
+    flex-direction: column;
+
+    &__group{
+        display: flex;
+        flex-direction: column;
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__label {
+        font-weight: 500;
+        margin-bottom: .5rem;
+    }
+
+    &__input {
+        border: 1px solid #9F9C9C;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background-color: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.6rem;
+        color: $color-black;
+        border-radius: 1rem;
+
+        &::placeholder{
+            font-size: 1.4rem;
+        }
+    }
+
+    &__address &__input{
+        &:not(:last-child){
+            margin-bottom: .5rem;
+        }
+    }
+
+    &__heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+    &__input-container {
+        position: relative;
+        margin-bottom: .5rem;
+    }
+
+    &__img-container {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        width: 4rem;
+
+        &:not(:last-child){
+            margin-right: 1rem;
+        }
+    }
+
+    &__flex{
+        display: flex;
+
+        &--left {
+            margin-right: 2rem;
+        }
+    }
+
+    &__bill {
+        font-weight: 500;
+        font-size: 1.4rem;
+        margin-left: 1rem;
+    }
+
+    &__order {
+        margin-top: 2rem;
+        background-color: $color-blue;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+}

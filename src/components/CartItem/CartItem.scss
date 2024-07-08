@@ -1,0 +1,68 @@
+@import "../../assets/partials/colors";
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+
+    &__img{
+        width: 38%;
+        margin: 0 1rem;
+        & img{
+            max-width: 100%;
+        }
+    }
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__paragraph{
+        font-weight: 550;
+        margin-bottom: 1rem;
+        
+    }
+
+    &__cta{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__counter{
+        display: flex;
+        align-items: center;
+        border: 1px solid $color-black;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    &__count {
+        padding: .5rem 1rem;
+        font-weight: 500;
+        display: inline-block;
+        transform: translateY(-1px);
+        border-left: 1px solid $color-black;
+        border-right: 1px solid $color-black;
+    }
+
+    &__subtract, &__add{
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+
+        &:hover{
+            background-color: #007AFF26;
+        }
+    }
+
+    &__subtract, &__add, &__delete{
+        display: inline-block;
+        cursor: pointer;
+    }
+}

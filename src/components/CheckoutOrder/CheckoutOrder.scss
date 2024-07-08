@@ -1,0 +1,29 @@
+@import "../../assets/partials/colors";
+
+.order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    &__image-container {
+        width: 15rem;
+        margin-top: 2rem;
+    }
+
+    &__image{
+        max-width: 100%;
+    }
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+    }
+
+    &__heading {
+        font-size: 600;
+        margin-bottom: 1rem;
+        // font-size: 2rem;
+    }
+}

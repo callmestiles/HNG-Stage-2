@@ -1,0 +1,67 @@
+@import "../../assets/partials/colors";
+@import "../../assets/partials/base";
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+
+    &__timeline {
+        display: flex;
+        padding: 4rem 0;
+        justify-content: center;
+        align-items: center;
+        @media only screen and (max-width: 43.75em) {
+            padding: 2rem;
+            // grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+    &__complete{
+        font-weight: 550;
+    }
+
+}
+
+.content{
+    margin: 0 6rem;
+    padding: 6rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    
+    @media only screen and (max-width: 43.75em) {
+        flex-direction: column;
+        margin: 0 2rem;
+        align-items: center;
+    }
+
+
+    &__cart-info, &__ship-info{
+        padding: 4rem 3rem;
+        border: 1px solid $color-black;
+        border-radius: 1rem;
+    }
+
+    &__cart-info {
+        display: flex;
+        flex-direction: column;
+        margin-right: 4rem;
+
+        @media only screen and (max-width: 43.75em) {
+            margin-right: 0;
+            margin-bottom: 4rem;
+        }
+
+    }
+
+    &__info{
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+    &__price{
+        margin-top: 2rem;
+    }
+}

@@ -1,0 +1,60 @@
+@import "../../assets/partials/colors";
+.cart{
+    position: absolute;
+    width: 45rem;
+    top: 100%;
+    right: 6rem;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    padding: 3rem 2rem;
+
+    @media only screen and (max-width: 68.75em) {
+        top: 0;
+        right: 0;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    &__top{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__close{
+        cursor: pointer;
+    }
+
+
+    &__heading {
+        font-size: 2.5rem;
+        font-weight: 550;
+        margin-bottom: 4rem;
+    }
+
+    &__middle{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__check-all {
+        display: flex;
+    }
+
+    &__all {
+        margin-left: 3rem;
+        font-weight: 550;
+    }
+
+    &__break {
+        border: none;
+        height: 1px;
+        background-color: $color-grey;
+        margin: 3rem 0;
+    }
+}
+
+
+
+

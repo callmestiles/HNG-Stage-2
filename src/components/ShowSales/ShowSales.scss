@@ -1,0 +1,19 @@
+@import "../../assets/partials/colors";
+
+.show-sales {
+    // grid-column: main-start / main-end;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column; 
+
+    &__products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 6rem;
+
+        &:last-child{
+            margin-bottom: 6rem;
+        }
+    }
+}
