@@ -33,20 +33,14 @@ function Product({ product, addItem, isInCart }) {
         <div className="product__cart" onClick={handleCart}>
           <img
             src={
-              addedToCart
-                ? "../../../icons/icon-cart-fill.svg"
-                : "../../../icons/icon-cart.svg"
+              addedToCart ? "/icons/icon-cart-fill.svg" : "/icons/icon-cart.svg"
             }
             alt="Icon-cart"
           />
         </div>
         <div className="product__like" onClick={handleLike}>
           <img
-            src={
-              liked
-                ? "../../../icons/icon-like-fill.svg"
-                : "../../../icons/icon-like.svg"
-            }
+            src={liked ? "/icons/icon-like-fill.svg" : "/icons/icon-like.svg"}
             alt="Icon-like"
           />
         </div>

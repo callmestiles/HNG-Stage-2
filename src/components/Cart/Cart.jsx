@@ -31,7 +31,7 @@ function Cart({ cartItems, close, deleteFromCart }) {
       <div className="cart__top">
         <h3 className="cart__heading">My cart</h3>
         <div className="cart__close" onClick={handleClose}>
-          <img src="../../../icons/icon-cancel.svg" alt="Icon-close" />
+          <img src="/icons/icon-cancel.svg" alt="Icon-close" />
         </div>
       </div>
       <div className="cart__middle">

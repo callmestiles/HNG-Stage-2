@@ -5,10 +5,7 @@ function Timeline({ text }) {
   return (
     <div className="timeline">
       <p className="timeline__text">{text}</p>
-      <img
-        src="../../../icons/icon-arrow-right-double.svg"
-        alt="Icon-right-double"
-      />
+      <img src="/icons/icon-arrow-right-double.svg" alt="Icon-right-double" />
     </div>
   );
 }

@@ -29,17 +29,17 @@ function ShipInfo() {
           <div className="ship__img-container">
             <img
               className="ship__img"
-              src="../../../images/logos_visa-min.png"
+              src="/images/logos_visa-min.png"
               alt=""
             />
             <img
               className="ship__img"
-              src="../../../images/uim_master-card-min.png"
+              src="/images/uim_master-card-min.png"
               alt=""
             />
             <img
               className="ship__img"
-              src="../../../images/fontisto_american-express-min.png"
+              src="/images/fontisto_american-express-min.png"
               alt=""
             />
           </div>

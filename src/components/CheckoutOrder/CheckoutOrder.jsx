@@ -5,7 +5,7 @@ function CheckoutOrder() {
     <div className="order">
       <div className="order__image-container">
         <img
-          src="../../../images/image 4-min.png"
+          src="/images/image 4-min.png"
           alt="Product Image"
           className="order__image"
         />

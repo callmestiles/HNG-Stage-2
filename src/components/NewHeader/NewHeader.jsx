@@ -13,27 +13,23 @@ function NewHeader({
     <header className="header">
       <div className="header__left">
         <div className="header__logo-container">
-          <img
-            src="../../../icons/logo.svg"
-            alt="Logo"
-            className="header__logo"
-          />
+          <img src="/icons/logo.svg" alt="Logo" className="header__logo" />
         </div>
         <form className="header__form form">
           <button className="form__button" />
           <input type="text" className="form__input" placeholder="Search" />
         </form>
         <div className="header__search">
-          <img src="../../../icons/icon-search.svg" alt="Icon-search" />
+          <img src="/icons/icon-search.svg" alt="Icon-search" />
         </div>
       </div>
 
       <div className="header__icon-container">
         <div className="header__icon--big" onClick={toggleCartShow}>
-          <img src="../../../icons/icon-cart-added.svg" alt="Icon-cart-added" />
+          <img src="/icons/icon-cart-added.svg" alt="Icon-cart-added" />
         </div>
         <div className="header__icon--small" onClick={toggleCartShow}>
-          <img src="../../../icons/icon-cart-small.svg" alt="Icon-cart-added" />
+          <img src="/icons/icon-cart-small.svg" alt="Icon-cart-added" />
         </div>
       </div>
 
