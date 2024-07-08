@@ -6,7 +6,7 @@ function Timeline({ text }) {
     <div className="timeline">
       <p className="timeline__text">{text}</p>
       <img
-        src="../../../public/icons/icon-arrow-right-double.svg"
+        src="../../icons/icon-arrow-right-double.svg"
         alt="Icon-right-double"
       />
     </div>

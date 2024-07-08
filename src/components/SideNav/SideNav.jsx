@@ -13,10 +13,7 @@ function SideNav({ toggleNavShow }) {
         <div className="nav__top">
           <h2 className="nav__heading">Category</h2>
           <div className="nav__close" onClick={toggleNav}>
-            <img
-              src="../../../public/icons/icon-cancel-2.svg"
-              alt="Icon-cancel"
-            />
+            <img src="../../icons/icon-cancel-2.svg" alt="Icon-cancel" />
           </div>
         </div>
 

@@ -49,8 +49,8 @@ function Home({ cartItems, add, deleteFromCart, isInCart }) {
             <img
               src={
                 showNav
-                  ? "../../../public/icons/icon-filter-active.svg"
-                  : "../../../public/icons/icon-filter.svg"
+                  ? "../../icons/icon-filter-active.svg"
+                  : "../../icons/icon-filter.svg"
               }
               alt="Filter-button"
             />
