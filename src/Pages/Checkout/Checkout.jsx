@@ -5,16 +5,26 @@ import Timeline from "../../components/Timeline/Timeline";
 import Break from "../../components/Break";
 import CheckoutOrder from "../../components/CheckoutOrder/CheckoutOrder";
 import ShipInfo from "../../components/ShipInfo/ShipInfo";
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
-function Checkout() {
+function Checkout({ cartItems }) {
+  const [productPrice, setProductPrice] = useState(0);
+
+  useEffect(() => {
+    const total = cartItems.reduce(
+      (sum, cartItem) => sum + cartItem.content.price,
+      0
+    );
+    setProductPrice(total);
+  }, [cartItems]);
+
   return (
     <div className="checkout">
-      <NewHeader />
+      <NewHeader isCheckOutPage="true" />
 
       <div className="checkout__timeline">
-        <Timeline text="Products" />
-        <Timeline text="My Cart" />
-        <Timeline text="Checkout" />
+        <Timeline />
         <p className="checkout__complete">Order Complete</p>
       </div>
 
@@ -24,14 +34,19 @@ function Checkout() {
         <div className="content__cart-info">
           <h4 className="content__info">My Order</h4>
           <Break />
-          <CheckoutOrder />
-          <Break />
-          <CheckoutOrder />
-          <Break />
+          {cartItems.map((cartItem, index) => {
+            return (
+              <CheckoutOrder
+                key={index}
+                url={cartItem.content.imgURL}
+                heading={cartItem.content.heading}
+              />
+            );
+          })}
           <div className="content__price">
-            <Charges info="Subtotal" price="150" />
-            <Charges info="Shipping" price="10" />
-            <Charges info="Total" price="160" />
+            <Charges info="Subtotal" price={productPrice} />
+            <Charges info="Shipping" price={10} />
+            <Charges info="Total" price={productPrice + 10} />
           </div>
         </div>
         <div className="content__ship-info">
@@ -42,5 +57,9 @@ function Checkout() {
     </div>
   );
 }
+
+Checkout.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default Checkout;

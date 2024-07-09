@@ -1,12 +1,23 @@
 import "./Page.scss";
-import products from "../../display-products.js";
 import SideNav from "../../components/SideNav/SideNav";
 import Product from "../../components/Product/Product";
 import NewHeader from "../../components/NewHeader/NewHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const module = await import(
+        `../../products/display-${heading}-products.js`
+      );
+      setProducts(module.default);
+    }
+    fetchProducts();
+  }, [heading]);
+
   const [showNav, setShowNav] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
@@ -29,6 +40,7 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
         cartItems={cartItems}
         showCart={showCart}
         toggleCartShow={toggleCartShow}
+        toggleNavShow={toggleNavShow}
         closeCart={closeCart}
         deleteFromCart={deleteFromCart}
       />
@@ -44,7 +56,7 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
                 showNav && "page__filter-text--nav-open"
               }`}
             >
-              Filter
+              Filter by Category
             </p>
             <img
               src={
@@ -79,6 +91,7 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
 }
 
 Page.propTypes = {
+  query: PropTypes.object,
   heading: PropTypes.string,
   cartItems: PropTypes.arrayOf(PropTypes.object),
   add: PropTypes.func,

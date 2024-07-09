@@ -4,12 +4,36 @@
     display: flex;
     align-items: center;
 
-    &:not(:last-child){
+    // &:not(:last-child){
+    //     margin-right: 2rem;
+    //     @media only screen and (max-width: 43.75em) {
+    //         margin-right: 1rem;
+    //     }
+
+    // }
+
+    &__link{
+        display: block;
+        text-decoration: none;
+        color: $color-black;
+        font-weight: 350;
+        transition: all .2s ease;
         margin-right: 2rem;
+        text-align: center;
         @media only screen and (max-width: 43.75em) {
             margin-right: 1rem;
         }
 
+        &:hover{
+            font-weight: 550;
+        }
+    }
+
+    &__icon {
+        margin-right: 2rem;
+        @media only screen and (max-width: 43.75em) {
+            margin-right: 1rem;
+        }
     }
 
     &__text {

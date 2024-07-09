@@ -1,15 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
 import Page from "./Pages/Content/Page";
 import Checkout from "./Pages/Checkout/Checkout";
-import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
   function addToCart(item) {
-    const cartItem = { id: uuidv4(), content: item };
+    const cartItem = { content: item };
     setCartItems((prevValues) => {
       return [...prevValues, cartItem];
     });
@@ -17,8 +15,6 @@ function App() {
 
   function isInCart(id) {
     return cartItems.some((item) => {
-      console.log(item.content.id);
-      console.log(id);
       return item.content.id == id;
     });
   }
@@ -49,7 +45,8 @@ function App() {
         <Route
           path="/categories/all-products"
           element={
-            <Home
+            <Page
+              heading="All Products"
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
@@ -94,6 +91,18 @@ function App() {
           }
         />
         <Route
+          path="/categories/sunscreens"
+          element={
+            <Page
+              heading="Sunscreens"
+              cartItems={cartItems}
+              add={addToCart}
+              deleteFromCart={deleteFromCart}
+              isInCart={isInCart}
+            />
+          }
+        />
+        <Route
           path="/categories/masks"
           element={
             <Page
@@ -129,7 +138,7 @@ function App() {
             />
           }
         />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
         <Route
           path="*"
           element={

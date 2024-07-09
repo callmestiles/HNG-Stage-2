@@ -6,8 +6,10 @@ function NewHeader({
   cartItems,
   showCart,
   toggleCartShow,
+  toggleNavShow,
   closeCart,
-  deleteFromCart
+  deleteFromCart,
+  isCheckOutPage
 }) {
   return (
     <header className="header">
@@ -16,7 +18,9 @@ function NewHeader({
           <img src="/icons/logo.svg" alt="Logo" className="header__logo" />
         </div>
         <form className="header__form form">
-          <button className="form__button" />
+          <div className="form__button">
+            <img src="/icons/icon-search.svg" />
+          </div>
           <input type="text" className="form__input" placeholder="Search" />
         </form>
         <div className="header__search">
@@ -25,11 +29,32 @@ function NewHeader({
       </div>
 
       <div className="header__icon-container">
-        <div className="header__icon--big" onClick={toggleCartShow}>
-          <img src="/icons/icon-cart-added.svg" alt="Icon-cart-added" />
+        <div
+          className="header__icon header__icon--big"
+          onClick={toggleCartShow}
+        >
+          <img
+            style={isCheckOutPage && { display: "none" }}
+            src="/icons/icon-cart-added.svg"
+            alt="Icon-cart-added"
+          />
         </div>
-        <div className="header__icon--small" onClick={toggleCartShow}>
-          <img src="/icons/icon-cart-small.svg" alt="Icon-cart-added" />
+        <div
+          className="header__icon header__icon--small"
+          onClick={toggleCartShow}
+        >
+          <img
+            style={isCheckOutPage && { display: "none" }}
+            src="/icons/icon-cart-small.svg"
+            alt="Icon-cart-added"
+          />
+        </div>
+        <div onClick={toggleNavShow}>
+          <img
+            className="header__icon-menu"
+            src="/icons/icon-menu.svg"
+            alt="Icon-menu"
+          />
         </div>
       </div>
 
@@ -48,8 +73,10 @@ NewHeader.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   showCart: PropTypes.bool.isRequired,
   toggleCartShow: PropTypes.func.isRequired,
+  toggleNavShow: PropTypes.func.isRequired,
   closeCart: PropTypes.func.isRequired,
-  deleteFromCart: PropTypes.func.isRequired
+  deleteFromCart: PropTypes.func.isRequired,
+  isCheckOutPage: PropTypes.bool
 };
 
 export default NewHeader;

@@ -1,11 +1,34 @@
 import "./Timeline.scss";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
-function Timeline({ text }) {
+function Timeline() {
   return (
     <div className="timeline">
-      <p className="timeline__text">{text}</p>
-      <img src="/icons/icon-arrow-right-double.svg" alt="Icon-right-double" />
+      <NavLink to="/categories/all-products" className="timeline__link">
+        Products
+      </NavLink>
+      <img
+        src="/icons/icon-arrow-right-double.svg"
+        className="timeline__icon"
+        alt="Icon-right-double"
+      />
+      <div>
+        <NavLink to="/categories/all-products" className="timeline__link">
+          My Cart
+        </NavLink>
+      </div>
+      <img
+        src="/icons/icon-arrow-right-double.svg"
+        className="timeline__icon"
+        alt="Icon-right-double"
+      />
+      <p className="timeline__text">Checkout</p>
+      <img
+        src="/icons/icon-arrow-right-double.svg"
+        className="timeline__icon"
+        alt="Icon-right-double"
+      />
     </div>
   );
 }

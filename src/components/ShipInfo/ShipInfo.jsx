@@ -60,9 +60,10 @@ function ShipInfo() {
       </div>
       <div className="ship__flex">
         <CheckBox />
-        <p className="ship__bill">Billing address is the same as shipping</p>
+        <p className="ship__bill">Save my card details</p>
       </div>
-      <CheckoutButton text="Place Order" />
+      <CheckoutButton text="Checkout" />
+      <CheckoutButton text="Checkout with transfer" invertStyles="true" />
     </form>
   );
 }
