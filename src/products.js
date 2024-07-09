@@ -7,7 +7,7 @@ const products = [
   },
   {
     id: 1,
-    imgURL: "/images/image 5-min.png",
+    imgURL: "/images/image 8-min.png",
     heading: "Black Girl Sunscreen SPF 30",
     price: 75
   },
