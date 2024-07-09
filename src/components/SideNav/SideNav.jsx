@@ -25,11 +25,6 @@ function SideNav({ toggleNavShow }) {
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/categories/cleaners" className="nav__link">
-                Cleansers
-              </NavLink>
-            </li>
-            <li className="nav__item">
               <NavLink to="/categories/toners" className="nav__link">
                 Toners
               </NavLink>

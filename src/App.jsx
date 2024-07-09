@@ -55,18 +55,6 @@ function App() {
           }
         />
         <Route
-          path="/categories/cleaners"
-          element={
-            <Page
-              heading="Cleaners"
-              cartItems={cartItems}
-              add={addToCart}
-              deleteFromCart={deleteFromCart}
-              isInCart={isInCart}
-            />
-          }
-        />
-        <Route
           path="/categories/toners"
           element={
             <Page
