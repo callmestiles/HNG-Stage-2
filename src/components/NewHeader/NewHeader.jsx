@@ -23,9 +23,6 @@ function NewHeader({
           </div>
           <input type="text" className="form__input" placeholder="Search" />
         </form>
-        <div className="header__search">
-          <img src="/icons/icon-search.svg" alt="Icon-search" />
-        </div>
       </div>
 
       <div className="header__icon-container">
@@ -38,6 +35,9 @@ function NewHeader({
             src="/icons/icon-cart-added.svg"
             alt="Icon-cart-added"
           />
+        </div>
+        <div className="header__icon header__search">
+          <img src="/icons/icon-search.svg" alt="Icon-search" />
         </div>
         <div
           className="header__icon header__icon--small"
