@@ -35,7 +35,9 @@ function CartItem({ allChecked, index, product, price, url, deleteFromCart }) {
 
   return (
     <div className="cart-item">
-      <CheckBox checked={itemChecked} onChange={handleCheckboxChange} />
+      <div className="cart-item__checkbox">
+        <CheckBox checked={itemChecked} onChange={handleCheckboxChange} />
+      </div>
       <div className="cart-item__img">
         <img src={url} alt="Cart-item Image" />
       </div>
