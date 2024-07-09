@@ -1,6 +1,6 @@
 import "./ShipInfo.scss";
 import CheckBox from "../CheckBox/CheckBox";
-import CheckoutButton from "../CheckoutButton/CheckoutButton";
+// import CheckoutButton from "../CheckoutButton/CheckoutButton";
 
 function ShipInfo() {
   return (
@@ -62,8 +62,6 @@ function ShipInfo() {
         <CheckBox />
         <p className="ship__bill">Save my card details</p>
       </div>
-      <CheckoutButton text="Checkout" />
-      <CheckoutButton text="Checkout with transfer" invertStyles="true" />
     </form>
   );
 }

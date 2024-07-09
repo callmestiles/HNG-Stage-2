@@ -59,7 +59,7 @@ function Cart({ cartItems, close, deleteFromCart }) {
         <Charges info="Shipping" price={10} />
         <Charges info="Total" price={productPrice + 10} />
       </div>
-      <CheckoutButton text="Continue To Checkout" />
+      <CheckoutButton text="Continue To Checkout" url="/checkout" />
     </div>
   );
 }

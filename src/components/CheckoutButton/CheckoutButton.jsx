@@ -2,7 +2,7 @@ import "./CheckoutButton.scss";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-function CheckoutButton({ text, invertStyles }) {
+function CheckoutButton({ text, invertStyles, url }) {
   const customStyle = {
     backgroundColor: "#fff",
     color: "#14335A",
@@ -10,7 +10,7 @@ function CheckoutButton({ text, invertStyles }) {
   };
   return (
     <NavLink
-      to="/checkout"
+      to={url}
       className="checkoutbutton"
       style={invertStyles && customStyle}
     >
@@ -21,6 +21,7 @@ function CheckoutButton({ text, invertStyles }) {
 
 CheckoutButton.propTypes = {
   text: PropTypes.string,
+  url: PropTypes.string,
   invertStyles: PropTypes.bool
 };
 

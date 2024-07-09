@@ -104,7 +104,7 @@ const products = [
   },
   {
     id: "exfoilator-17",
-    imgURL: "../public/images/Exfoilators/5.JPG",
+    imgURL: "/images/Exfoilators/5.JPG",
     heading: "SkinMedica Exfoliating Cleanser",
     price: 75
   },

@@ -2,8 +2,20 @@
 @import "../../assets/partials/base";
 
 .checkout {
+    position: relative;
     display: flex;
     flex-direction: column;
+
+    &--order-complete{
+        &::after{
+            display: block;
+            content: '';
+            position: absolute;
+            background-color: rgba(0,0,0,.35);
+            width: 100%;
+            height: 100%;
+        }
+    }
 
     &__timeline {
         display: flex;
@@ -45,6 +57,8 @@
 
     &__ship-info {
         width: 50%;
+        display: flex;
+        flex-direction: column;
         @media only screen and (max-width: 43.75em) {
             width: 100%;
         }
@@ -72,5 +86,64 @@
 
     &__price{
         margin-top: 2rem;
+    }
+
+    &__checkout {
+        margin-top: 2rem;
+        background-color: $color-blue;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 1rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.4rem;
+        padding: 1.5rem;
+        color: #FFFFFF;
+        font-weight: 600;
+        opacity: 1;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover{
+            opacity: .8;
+        }
+
+        &--invert{
+            background-color: #fff;
+            color: $color-blue;
+            border: 1px solid $color-blue;
+        }
+    }
+}
+
+.order-complete {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    text-align: center;
+    padding: 4rem 0;
+    z-index: 999;
+
+    &__img {
+        font-size: 8rem;
+        margin-bottom: 1rem;
+    }
+
+    &__heading {
+        font-size: 2rem;
+        margin-bottom: .5rem;
+    }
+
+    &__paragraph{
+        width: 55%;
+
+        @media only screen and (max-width: 43.75em) {
+            width: 90%;    
+        }
     }
 }
