@@ -12,6 +12,7 @@ function SideNav({ toggleNavShow }) {
       <div className="nav-container">
         <div className="nav__top">
           <h2 className="nav__heading">Category</h2>
+          {/* This is for the mobile screen, so that the nav will close when the img is clicked */}
           <div className="nav__close" onClick={toggleNav}>
             <img src="/icons/icon-cancel-2.svg" alt="Icon-cancel" />
           </div>

@@ -57,7 +57,7 @@ function NewHeader({
           />
         </div>
       </div>
-
+      {/* Conditionally render the showCart */}
       {showCart && (
         <Cart
           cartItems={cartItems}

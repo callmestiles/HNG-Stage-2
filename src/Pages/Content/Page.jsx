@@ -6,8 +6,13 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
+  //States
   const [products, setProducts] = useState([]);
+  const [showNav, setShowNav] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
+  //This useEffect fetches the array of products returned from the products folder.
+  //For each page, it finds its corresponding products array and imports it
   useEffect(() => {
     async function fetchProducts() {
       const module = await import(
@@ -17,9 +22,6 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
     }
     fetchProducts();
   }, [heading]);
-
-  const [showNav, setShowNav] = useState(false);
-  const [showCart, setShowCart] = useState(false);
 
   function toggleCartShow() {
     setShowCart(!showCart);
@@ -35,6 +37,7 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
 
   return (
     <section className={`page ${showCart && "page--cart-open"}`}>
+      {/* Conditionally render SideNav */}
       {showNav && <SideNav toggleNavShow={toggleNavShow} />}
       <NewHeader
         cartItems={cartItems}
@@ -70,6 +73,7 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
         </div>
 
         <div className={`page__products ${showNav && "page__products--open"}`}>
+          {/* Loops through the array of products imported and for each one, it passes the necessary props to the Product component */}
           {products.map((product, index) => {
             return (
               <Product

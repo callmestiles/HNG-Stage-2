@@ -8,9 +8,9 @@ import CheckoutButton from "../../components/CheckoutButton/CheckoutButton";
 import ShipInfo from "../../components/ShipInfo/ShipInfo";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-// import CheckoutButton from "../../components/CheckoutButton/CheckoutButton";
 
 function Checkout({ cartItems }) {
+  //States
   const [orderComplete, setOrderComplete] = useState(false);
   const [productPrice, setProductPrice] = useState(0);
 
@@ -18,6 +18,8 @@ function Checkout({ cartItems }) {
     setOrderComplete(true);
   }
 
+  //This useEffects calculates the sum of all the prices of all the items in the cart.
+  //When it's done, it sets the result to the state productPrice
   useEffect(() => {
     const total = cartItems.reduce(
       (sum, cartItem) => sum + cartItem.content.price,
@@ -41,6 +43,7 @@ function Checkout({ cartItems }) {
         <div className="content__cart-info">
           <h4 className="content__info">My Order</h4>
           <Break />
+          {/* Maps through all the items in cartItems and for each one, it passes the necessary props to the CheckoutOrder component */}
           {cartItems.map((cartItem, index) => {
             return (
               <CheckoutOrder
@@ -70,6 +73,7 @@ function Checkout({ cartItems }) {
           </button>
         </div>
       </div>
+      {/* Comditionally render a div if orderComplete is true */}
       {orderComplete && (
         <div className="order-complete">
           <p className="order-complete__img">🎉</p>

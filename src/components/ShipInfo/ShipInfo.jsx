@@ -1,6 +1,5 @@
 import "./ShipInfo.scss";
 import CheckBox from "../CheckBox/CheckBox";
-// import CheckoutButton from "../CheckoutButton/CheckoutButton";
 
 function ShipInfo() {
   return (

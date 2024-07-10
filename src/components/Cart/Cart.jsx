@@ -7,9 +7,11 @@ import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import { useState, useEffect } from "react";
 
 function Cart({ cartItems, close, deleteFromCart }) {
+  //States
   const [productPrice, setProductPrice] = useState(0);
   const [allChecked, setAllChecked] = useState(false);
 
+  //This useEffect sums up all the pricea of all the products in the cart and sets the productPrice to the result
   useEffect(() => {
     const total = cartItems.reduce(
       (sum, cartItem) => sum + cartItem.content.price,
@@ -35,6 +37,7 @@ function Cart({ cartItems, close, deleteFromCart }) {
         </div>
       </div>
       <div className="cart__middle">
+        {/* Maps through the cartItems array and for each cartItem, it passes the necessary props to the CartItem component */}
         {cartItems.map((cartItem, index) => {
           return (
             <CartItem

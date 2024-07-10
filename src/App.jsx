@@ -4,8 +4,10 @@ import Checkout from "./Pages/Checkout/Checkout";
 import { useState } from "react";
 
 function App() {
+  // Cart State declaration
   const [cartItems, setCartItems] = useState([]);
 
+  //Function to add an item to the cart
   function addToCart(item) {
     const cartItem = { content: item };
     setCartItems((prevValues) => {
@@ -13,12 +15,14 @@ function App() {
     });
   }
 
+  //Function to check if an item's id is in the cart
   function isInCart(id) {
     return cartItems.some((item) => {
       return item.content.id == id;
     });
   }
 
+  //Function to delete an item from the cart
   function deleteFromCart(id) {
     setCartItems((prevValues) => {
       return prevValues.filter((item) => {
@@ -127,6 +131,8 @@ function App() {
           }
         />
         <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+
+        {/* If web user tries to go to a page that's not pre-defined, it returns the homepage back instead of throwing an error*/}
         <Route
           path="*"
           element={

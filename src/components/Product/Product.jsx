@@ -6,6 +6,9 @@ function Product({ product, addItem, isInCart }) {
   const [liked, setLiked] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
+  //This useEffect is responsible for changing the appearance of the cart-icon on the produt, if it has been removed from the cart
+  //It checks for each product, if the id of the product is also in the cart. If yes, nothing changes but if no, it sets
+  //the addedToCart state to false and that in return will change the apperance of the cart icon.
   useEffect(() => {
     setAddedToCart(isInCart(product.id));
   }, [isInCart, product.id]);
@@ -15,7 +18,7 @@ function Product({ product, addItem, isInCart }) {
   }
 
   function handleCart() {
-    console.log(isInCart(product.id));
+    //If product isn't added to cart already, add it
     if (!addedToCart) {
       addItem(product);
     }

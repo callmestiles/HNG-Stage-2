@@ -4,9 +4,12 @@ import CheckBox from "../CheckBox/CheckBox";
 import { useState, useEffect } from "react";
 
 function CartItem({ allChecked, index, product, price, url, deleteFromCart }) {
+  //States
   const [count, setCount] = useState(1);
   const [itemChecked, setItemChecked] = useState(allChecked);
 
+  //This useEffect cnanges all the state of the Checkboxes in the cart to true or false depending on the state of the allChecked
+  //being passed as a prop
   useEffect(() => {
     setItemChecked(allChecked);
   }, [allChecked]);
