@@ -22,7 +22,7 @@ function App() {
   function deleteFromCart(id) {
     setCartItems((prevValues) => {
       return prevValues.filter((item) => {
-        return item.id !== id;
+        return item.content.id !== id;
       });
     });
   }

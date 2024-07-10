@@ -39,7 +39,7 @@ function Cart({ cartItems, close, deleteFromCart }) {
           return (
             <CartItem
               key={index}
-              index={cartItem.id}
+              index={cartItem.content.id}
               product={cartItem.content.heading}
               url={cartItem.content.imgURL}
               price={cartItem.content.price}
