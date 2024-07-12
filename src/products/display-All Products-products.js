@@ -103,12 +103,6 @@ const products = [
     price: 75
   },
   {
-    id: "exfoilator-17",
-    imgURL: "/images/Exfoilators/5.JPG",
-    heading: "SkinMedica Exfoliating Cleanser",
-    price: 75
-  },
-  {
     id: "mask-18",
     imgURL: "/images/Masks/1.JPG",
     heading: "TONYMOLY Pureness 100 Mask",

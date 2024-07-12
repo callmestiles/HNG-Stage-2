@@ -22,12 +22,6 @@ const products = [
     imgURL: "/images/Exfoilators/4.JPG",
     heading: "Fresh Sugar Face Polish",
     price: 75
-  },
-  {
-    id: "exfoilator-17",
-    imgURL: "/images/Exfoilators/5.JPG",
-    heading: "SkinMedica Exfoliating Cleanser",
-    price: 75
   }
 ];
 
