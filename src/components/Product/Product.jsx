@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Product.scss";
 import PropTypes from "prop-types";
 
-function Product({ product, addItem, isInCart }) {
+function Product({ product, addItem, deleteFromCart, isInCart }) {
   const [liked, setLiked] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
@@ -21,16 +21,18 @@ function Product({ product, addItem, isInCart }) {
     //If product isn't added to cart already, add it
     if (!addedToCart) {
       addItem(product);
+    } else {
+      deleteFromCart(product.id);
     }
     setAddedToCart(!addedToCart);
   }
 
   return (
-    <div className="product" id={product.id}>
+    <div className="product" id={product.unique_id}>
       <div className="product__img-container">
         <img
           className="product__img"
-          src={product.imgURL}
+          src={`https://api.timbu.cloud/images/${product.photos[0].url}`}
           alt="Product image"
         />
         <div className="product__cart" onClick={handleCart}>
@@ -49,9 +51,11 @@ function Product({ product, addItem, isInCart }) {
         </div>
       </div>
       <div className="product__text">
-        <h4 className="product__heading">{product.heading}</h4>
-        <p className="product__amount-sold">13,000 sold</p>
-        <p className="product__price">$75</p>
+        <h4 className="product__heading">{product.name}</h4>
+        <p className="product__amount-sold">
+          {product.available_quantity} left
+        </p>
+        <p className="product__price">${product.current_price[0].USD[0]}</p>
       </div>
     </div>
   );
@@ -60,6 +64,7 @@ function Product({ product, addItem, isInCart }) {
 Product.propTypes = {
   product: PropTypes.object.isRequired,
   addItem: PropTypes.func.isRequired,
+  deleteFromCart: PropTypes.func.isRequired,
   isInCart: PropTypes.func.isRequired
 };
 

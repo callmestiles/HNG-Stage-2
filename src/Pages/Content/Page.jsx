@@ -4,24 +4,35 @@ import Product from "../../components/Product/Product";
 import NewHeader from "../../components/NewHeader/NewHeader";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
-  //States
+  // States
   const [products, setProducts] = useState([]);
   const [showNav, setShowNav] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
-  //This useEffect fetches the array of products returned from the products folder.
-  //For each page, it finds its corresponding products array and imports it
+  // Fetch products from API
   useEffect(() => {
     async function fetchProducts() {
-      const module = await import(
-        `../../products/display-${heading}-products.js`
-      );
-      setProducts(module.default);
+      try {
+        const response = await axios.get(
+          "/api/products?organization_id=4805b008d8d04be6a6f9591d90ebc5c5&Appid=4DJSGZ6L3MY15H0&Apikey=33b44fc83ee24e2ba6a45c2379e0872920240712123441179432"
+        );
+        setProducts(response.data.items);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     }
     fetchProducts();
-  }, [heading]);
+  }, []);
+
+  // Filter products based on category
+  const filteredProducts = products.filter((product) =>
+    product.categories.some((category) => {
+      return category.name.toLowerCase() === heading.toLowerCase();
+    })
+  );
 
   function toggleCartShow() {
     setShowCart(!showCart);
@@ -74,20 +85,16 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
 
         <div className={`page__products ${showNav && "page__products--open"}`}>
           {/* Loops through the array of products imported and for each one, it passes the necessary props to the Product component */}
-          {products.map((product, index) => {
-            return (
-              <Product
-                cartItems={cartItems}
-                key={index}
-                product={product}
-                addItem={add}
-                isInCart={isInCart}
-              />
-            );
-          })}
-        </div>
-        <div className="page__page">
-          <p className="page__page-num">1</p>
+          {filteredProducts.map((product, index) => (
+            <Product
+              cartItems={cartItems}
+              key={index}
+              product={product}
+              addItem={add}
+              deleteFromCart={deleteFromCart}
+              isInCart={isInCart}
+            />
+          ))}
         </div>
       </div>
     </section>

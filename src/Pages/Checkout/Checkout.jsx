@@ -14,19 +14,16 @@ function Checkout({ cartItems }) {
   const [orderComplete, setOrderComplete] = useState(false);
   const [productPrice, setProductPrice] = useState(0);
 
+  useEffect(() => {
+    const storedPrice = localStorage.getItem("productPrice");
+    if (storedPrice) {
+      setProductPrice(Number(storedPrice));
+    }
+  }, []);
+
   function handleOrder() {
     setOrderComplete(true);
   }
-
-  //This useEffects calculates the sum of all the prices of all the items in the cart.
-  //When it's done, it sets the result to the state productPrice
-  useEffect(() => {
-    const total = cartItems.reduce(
-      (sum, cartItem) => sum + cartItem.content.price,
-      0
-    );
-    setProductPrice(total);
-  }, [cartItems]);
 
   return (
     <div className={`checkout ${orderComplete && "checkout--order-complete"}`}>
@@ -48,8 +45,13 @@ function Checkout({ cartItems }) {
             return (
               <CheckoutOrder
                 key={index}
-                url={cartItem.content.imgURL}
-                heading={cartItem.content.heading}
+                url={cartItem.content.photos[0].url}
+                heading={cartItem.content.name}
+                amount={Number(
+                  localStorage.getItem(
+                    `cart-item-${cartItem.content.id}-quantity`
+                  )
+                )}
               />
             );
           })}
@@ -82,7 +84,10 @@ function Checkout({ cartItems }) {
             You will be receiving an email with your order details and
             information soon.
           </p>
-          <CheckoutButton text="Continue Shopping" url="/" />
+          <CheckoutButton
+            text="Continue Shopping"
+            url="/categories/all-products"
+          />
         </div>
       )}
     </div>

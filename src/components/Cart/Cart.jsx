@@ -4,55 +4,92 @@ import CartItem from "../CartItem/CartItem";
 import CheckBox from "../CheckBox/CheckBox";
 import Charges from "../Charges/Charges";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Cart({ cartItems, close, deleteFromCart }) {
-  //States
-  const [productPrice, setProductPrice] = useState(0);
   const [allChecked, setAllChecked] = useState(false);
+  const [quantities, setQuantities] = useState({});
+  const [itemPrices, setItemPrices] = useState({});
+  const [productPrice, setProductPrice] = useLocalStorage("productPrice", 0);
 
-  //This useEffect sums up all the pricea of all the products in the cart and sets the productPrice to the result
+  // Initialize quantities state based on cartItems
   useEffect(() => {
-    const total = cartItems.reduce(
-      (sum, cartItem) => sum + cartItem.content.price,
+    const initialQuantities = cartItems.reduce((acc, item) => {
+      // Set default quantity to 1 if it doesn't exist in the state
+      acc[item.content.id] = quantities[item.content.id] || 1;
+      return acc;
+    }, {});
+    setQuantities(initialQuantities);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartItems]); // Only depends on cartItems
+
+  // Calculate total price and update local storage
+  useEffect(() => {
+    const total = Object.values(itemPrices).reduce(
+      (sum, price) => sum + price,
       0
     );
     setProductPrice(total);
-  }, [cartItems]);
+  }, [itemPrices, setProductPrice]); // Only depends on itemPrices
 
-  function handleClose() {
-    close();
-  }
+  // Callback for handling quantity changes
+  const handleQuantityChange = useCallback((id, newQuantity) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: newQuantity
+    }));
+  }, []);
 
-  function toggleCheckAll() {
-    setAllChecked(!allChecked);
-  }
+  // Callback for handling price changes
+  const handlePriceChange = useCallback((id, newPrice) => {
+    setItemPrices((prevPrices) => ({
+      ...prevPrices,
+      [id]: newPrice
+    }));
+  }, []);
+
+  // Handler for deleting an item from the cart
+  const handleDeleteFromCart = useCallback(
+    (id) => {
+      deleteFromCart(id);
+      setItemPrices((prevPrices) => {
+        // eslint-disable-next-line no-unused-vars
+        const { [id]: _, ...remainingPrices } = prevPrices;
+        return remainingPrices;
+      });
+    },
+    [deleteFromCart]
+  );
 
   return (
     <div className="cart">
       <div className="cart__top">
         <h3 className="cart__heading">My cart</h3>
-        <div className="cart__close" onClick={handleClose}>
-          <img src="/icons/icon-cancel.svg" alt="Icon-close" />
+        <div className="cart__close" onClick={close}>
+          <img src="/icons/icon-cancel.svg" alt="Close" />
         </div>
       </div>
       <div className="cart__middle">
-        {/* Maps through the cartItems array and for each cartItem, it passes the necessary props to the CartItem component */}
-        {cartItems.map((cartItem, index) => {
-          return (
-            <CartItem
-              key={index}
-              index={cartItem.content.id}
-              product={cartItem.content.heading}
-              url={cartItem.content.imgURL}
-              price={cartItem.content.price}
-              deleteFromCart={deleteFromCart}
-              allChecked={allChecked}
-            />
-          );
-        })}
+        {cartItems.map((cartItem) => (
+          <CartItem
+            key={cartItem.content.id}
+            id={cartItem.content.id}
+            product={cartItem.content.name}
+            url={cartItem.content.photos[0].url}
+            price={cartItem.content.current_price[0].USD[0]}
+            deleteFromCart={handleDeleteFromCart}
+            allChecked={allChecked}
+            quantity={quantities[cartItem.content.id] || 1}
+            onQuantityChange={handleQuantityChange}
+            onPriceChange={handlePriceChange}
+          />
+        ))}
         <div className="cart__check-all">
-          <CheckBox checked={allChecked} onChange={toggleCheckAll} />
+          <CheckBox
+            checked={allChecked}
+            onChange={() => setAllChecked(!allChecked)}
+          />
           <p className="cart__all">ALL</p>
         </div>
       </div>
@@ -72,4 +109,5 @@ Cart.propTypes = {
   close: PropTypes.func.isRequired,
   deleteFromCart: PropTypes.func.isRequired
 };
+
 export default Cart;

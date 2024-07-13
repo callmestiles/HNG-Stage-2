@@ -36,7 +36,7 @@ function NewHeader({
             alt="Icon-cart-added"
           />
         </div>
-        <div className="header__icon header__search">
+        <div className="header__icon header__icon--search">
           <img src="/icons/icon-search.svg" alt="Icon-search" />
         </div>
         <div
@@ -49,12 +49,11 @@ function NewHeader({
             alt="Icon-cart-added"
           />
         </div>
-        <div onClick={toggleNavShow}>
-          <img
-            className="header__icon-menu"
-            src="/icons/icon-menu.svg"
-            alt="Icon-menu"
-          />
+        <div
+          className="header__icon header__icon--menu"
+          onClick={toggleNavShow}
+        >
+          <img src="/icons/icon-menu.svg" alt="Icon-menu" />
         </div>
       </div>
       {/* Conditionally render the showCart */}

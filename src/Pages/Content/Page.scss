@@ -116,17 +116,4 @@
             }
         }
     }
-
-    &__page {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__page-num {
-        padding: 1rem 1.5rem;
-        font-weight: 550;
-        background-color: #C9DDD8;
-        border-radius: 1rem;
-    }
 }

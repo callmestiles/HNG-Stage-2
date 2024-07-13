@@ -50,7 +50,7 @@ function App() {
           path="/categories/all-products"
           element={
             <Page
-              heading="All Products"
+              heading="All"
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
