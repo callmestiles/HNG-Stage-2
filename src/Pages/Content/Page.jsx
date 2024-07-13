@@ -13,12 +13,30 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
   const [showCart, setShowCart] = useState(false);
 
   // Fetch products from API
+  // useEffect(() => {
+  //   async function fetchProducts() {
+  //     try {
+  //       const response = await axios.get(
+  //         "/api/products?organization_id=4805b008d8d04be6a6f9591d90ebc5c5&Appid=4DJSGZ6L3MY15H0&Apikey=33b44fc83ee24e2ba6a45c2379e0872920240712123441179432"
+  //       );
+  //       setProducts(response.data.items);
+  //     } catch (error) {
+  //       console.error("Error fetching products:", error);
+  //     }
+  //   }
+  //   fetchProducts();
+  // }, []);
+
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await axios.get(
-          "/api/products?organization_id=4805b008d8d04be6a6f9591d90ebc5c5&Appid=4DJSGZ6L3MY15H0&Apikey=33b44fc83ee24e2ba6a45c2379e0872920240712123441179432"
-        );
+        const response = await axios.get(`/api/products`, {
+          params: {
+            organization_id: "4805b008d8d04be6a6f9591d90ebc5c5",
+            Appid: "4DJSGZ6L3MY15H0",
+            Apikey: "33b44fc83ee24e2ba6a45c2379e0872920240712123441179432"
+          }
+        });
         setProducts(response.data.items);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -26,7 +44,6 @@ function Page({ heading, cartItems, add, deleteFromCart, isInCart }) {
     }
     fetchProducts();
   }, []);
-
   // Filter products based on category
   const filteredProducts = products.filter((product) =>
     product.categories.some((category) => {
