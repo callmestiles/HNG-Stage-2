@@ -1,5 +1,4 @@
 import "./Timeline.scss";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 function Timeline() {
@@ -32,8 +31,4 @@ function Timeline() {
     </div>
   );
 }
-
-Timeline.propTypes = {
-  text: PropTypes.string.isRequired
-};
 export default Timeline;

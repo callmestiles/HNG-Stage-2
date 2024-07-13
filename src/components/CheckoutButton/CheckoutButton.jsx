@@ -1,6 +1,6 @@
 import "./CheckoutButton.scss";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutButton({ text, invertStyles, url }) {
   const customStyle = {
@@ -8,14 +8,22 @@ function CheckoutButton({ text, invertStyles, url }) {
     color: "#14335A",
     border: "1px solid #14335A"
   };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.setItem("fromCheckout", "true");
+    navigate(url);
+  };
+
   return (
-    <NavLink
-      to={url}
+    <button
       className="checkoutbutton"
-      style={invertStyles && customStyle}
+      style={invertStyles ? customStyle : {}}
+      onClick={handleClick}
     >
       {text}
-    </NavLink>
+    </button>
   );
 }
 

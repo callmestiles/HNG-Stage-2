@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import CartItem from "../CartItem/CartItem";
 import CheckBox from "../CheckBox/CheckBox";
 import Charges from "../Charges/Charges";
-import CheckoutButton from "../CheckoutButton/CheckoutButton";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
@@ -15,10 +15,10 @@ function Cart({ cartItems, close, deleteFromCart }) {
 
   // Initialize quantities state based on cartItems
   useEffect(() => {
-    const initialQuantities = cartItems.reduce((acc, item) => {
+    const initialQuantities = cartItems.reduce((accumulator, item) => {
       // Set default quantity to 1 if it doesn't exist in the state
-      acc[item.content.id] = quantities[item.content.id] || 1;
-      return acc;
+      accumulator[item.content.id] = quantities[item.content.id] || 1;
+      return accumulator;
     }, {});
     setQuantities(initialQuantities);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,7 +99,9 @@ function Cart({ cartItems, close, deleteFromCart }) {
         <Charges info="Shipping" price={10} />
         <Charges info="Total" price={productPrice + 10} />
       </div>
-      <CheckoutButton text="Continue To Checkout" url="/checkout" />
+      <NavLink to="/checkout" className="checkoutbutton">
+        Continue To Checkout
+      </NavLink>
     </div>
   );
 }

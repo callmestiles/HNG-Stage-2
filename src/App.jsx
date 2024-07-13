@@ -31,6 +31,10 @@ function App() {
     });
   }
 
+  function deleteAllFromCart() {
+    setCartItems([]);
+  }
+
   return (
     <div>
       <Routes>
@@ -42,6 +46,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -54,6 +59,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -66,6 +72,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -78,6 +85,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -90,6 +98,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -102,6 +111,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -114,6 +124,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }
@@ -126,6 +137,7 @@ function App() {
               cartItems={cartItems}
               add={addToCart}
               deleteFromCart={deleteFromCart}
+              deleteAllFromCart={deleteAllFromCart}
               isInCart={isInCart}
             />
           }

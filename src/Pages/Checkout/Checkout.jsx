@@ -27,7 +27,7 @@ function Checkout({ cartItems }) {
 
   return (
     <div className={`checkout ${orderComplete && "checkout--order-complete"}`}>
-      <NewHeader isCheckOutPage="true" />
+      <NewHeader cartItems={cartItems} isCheckOutPage={true} />
 
       <div className="checkout__timeline">
         <Timeline />

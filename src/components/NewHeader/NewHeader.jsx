@@ -11,6 +11,11 @@ function NewHeader({
   deleteFromCart,
   isCheckOutPage
 }) {
+  const cartIconSrc =
+    cartItems.length > 0
+      ? "/icons/icon-cart-added.svg"
+      : "/icons/icon-cart-header.svg";
+
   return (
     <header className="header">
       <div className="header__left">
@@ -32,7 +37,8 @@ function NewHeader({
         >
           <img
             style={isCheckOutPage && { display: "none" }}
-            src="/icons/icon-cart-added.svg"
+            src={cartIconSrc}
+            // src="/icons/icon-cart-added.svg"
             alt="Icon-cart-added"
           />
         </div>
@@ -69,12 +75,12 @@ function NewHeader({
 }
 
 NewHeader.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
-  showCart: PropTypes.bool.isRequired,
-  toggleCartShow: PropTypes.func.isRequired,
-  toggleNavShow: PropTypes.func.isRequired,
-  closeCart: PropTypes.func.isRequired,
-  deleteFromCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(PropTypes.object),
+  showCart: PropTypes.bool,
+  toggleCartShow: PropTypes.func,
+  toggleNavShow: PropTypes.func,
+  closeCart: PropTypes.func,
+  deleteFromCart: PropTypes.func,
   isCheckOutPage: PropTypes.bool
 };
 
