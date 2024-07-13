@@ -38,7 +38,6 @@ function NewHeader({
           <img
             style={isCheckOutPage && { display: "none" }}
             src={cartIconSrc}
-            // src="/icons/icon-cart-added.svg"
             alt="Icon-cart-added"
           />
         </div>

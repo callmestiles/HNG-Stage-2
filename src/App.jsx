@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Page from "./Pages/Content/Page";
 import Checkout from "./Pages/Checkout/Checkout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route
           path="/"

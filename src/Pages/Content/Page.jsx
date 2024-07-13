@@ -2,6 +2,7 @@ import "./Page.scss";
 import SideNav from "../../components/SideNav/SideNav";
 import Product from "../../components/Product/Product";
 import NewHeader from "../../components/NewHeader/NewHeader";
+import Loader from "../../components/Loader/Loader";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -18,6 +19,7 @@ function Page({
   const [products, setProducts] = useState([]);
   const [showNav, setShowNav] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check if we navigated from the Checkout page
@@ -29,6 +31,7 @@ function Page({
     }
 
     async function fetchProducts() {
+      setLoading(true);
       try {
         const response = await axios.get(`/api/products`, {
           params: {
@@ -40,6 +43,8 @@ function Page({
         setProducts(response.data.items);
       } catch (error) {
         console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
       }
     }
     fetchProducts();
@@ -64,6 +69,10 @@ function Page({
   function toggleNavShow() {
     setShowNav(!showNav);
   }
+
+  // function handleLoad() {
+  //   setLoading(false);
+  // }
 
   return (
     <section className={`page ${showCart && "page--cart-open"}`}>
@@ -102,19 +111,24 @@ function Page({
           </div>
         </div>
 
-        <div className={`page__products ${showNav && "page__products--open"}`}>
-          {/* Loops through the array of products imported and for each one, it passes the necessary props to the Product component */}
-          {filteredProducts.map((product, index) => (
-            <Product
-              cartItems={cartItems}
-              key={index}
-              product={product}
-              addItem={add}
-              deleteFromCart={deleteFromCart}
-              isInCart={isInCart}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <Loader /> // Show loader while loading
+        ) : (
+          <div
+            className={`page__products ${showNav && "page__products--open"}`}
+          >
+            {filteredProducts.map((product) => (
+              <Product
+                cartItems={cartItems}
+                key={product.unique_id}
+                product={product}
+                addItem={add}
+                deleteFromCart={deleteFromCart}
+                isInCart={isInCart}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
